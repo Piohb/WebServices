@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * {
  *   @OA\Property(property="name", type="string", example="name"),
  *   @OA\Property(property="description", type="text", example="description"),
- *   @OA\Property(property="category_id", type="id", example="category_id"),
+ *   @OA\Property(property="category_id", type="integer", example="category_id"),
  */
 class ProductCollection extends JsonResource
 {

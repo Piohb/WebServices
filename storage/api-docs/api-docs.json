@@ -1,0 +1,496 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/categories": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Add a new category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::store",
+                "requestBody": {
+                    "description": "Provide category informations",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Add a new category",
+                                        "type": "string",
+                                        "example": "category_name"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "category created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/categories/{id}": {
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Delete a category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "category deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update a category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Provide category informations",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Update a category",
+                                        "type": "string",
+                                        "example": "category_name"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "category updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Return a product",
+                "operationId": "App\\Http\\Controllers\\ProductController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get product",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete a product",
+                "operationId": "App\\Http\\Controllers\\ProductController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "product deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update a product",
+                "operationId": "App\\Http\\Controllers\\ProductController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Provide product informations",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Update a product",
+                                        "type": "string",
+                                        "example": "product_name"
+                                    },
+                                    "description": {
+                                        "description": "Update a product",
+                                        "type": "text",
+                                        "example": "product_description"
+                                    },
+                                    "category_id": {
+                                        "description": "Update a product",
+                                        "type": "integer",
+                                        "example": "product_category_id"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "product updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/products": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Add a new product",
+                "operationId": "App\\Http\\Controllers\\ProductController::store",
+                "requestBody": {
+                    "description": "Provide product informations",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "category_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Add a new Product",
+                                        "type": "string",
+                                        "example": "product_name"
+                                    },
+                                    "description": {
+                                        "description": "Add a new Product",
+                                        "type": "text",
+                                        "example": "product_description"
+                                    },
+                                    "category_id": {
+                                        "description": "Add a new Product",
+                                        "type": "integer",
+                                        "example": "product_category_id"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "product created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/stocks/{id}": {
+            "get": {
+                "tags": [
+                    "Stock"
+                ],
+                "summary": "Return a stock",
+                "operationId": "App\\Http\\Controllers\\StockController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "stock id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get stock",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stock"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {
+                "properties": {
+                    "name": {
+                        "schema": "CategoryCollection",
+                        "type": "string",
+                        "example": "name"
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "properties": {
+                    "name": {
+                        "schema": "ProductCollection",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "description": {
+                        "schema": "ProductCollection",
+                        "type": "text",
+                        "example": "description"
+                    },
+                    "category_id": {
+                        "schema": "ProductCollection",
+                        "type": "integer",
+                        "example": "category_id"
+                    }
+                },
+                "type": "object"
+            },
+            "Shop": {
+                "properties": {
+                    "name": {
+                        "schema": "ShopCollection",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "address_line": {
+                        "schema": "ShopCollection",
+                        "type": "string",
+                        "example": "address_line"
+                    },
+                    "zipcode": {
+                        "schema": "ShopCollection",
+                        "type": "string",
+                        "example": "zipcode"
+                    },
+                    "city": {
+                        "schema": "ShopCollection",
+                        "type": "string",
+                        "example": "city"
+                    },
+                    "country": {
+                        "schema": "ShopCollection",
+                        "type": "string",
+                        "example": "country"
+                    }
+                },
+                "type": "object"
+            },
+            "Stock": {
+                "properties": {
+                    "product_id": {
+                        "schema": "StockCollection",
+                        "type": "id",
+                        "example": "product_id"
+                    },
+                    "shop_id": {
+                        "schema": "StockCollection",
+                        "type": "id",
+                        "example": "shop_id"
+                    },
+                    "price": {
+                        "schema": "StockCollection",
+                        "type": "integer",
+                        "example": "price"
+                    },
+                    "stock": {
+                        "schema": "StockCollection",
+                        "type": "integer",
+                        "example": "stock"
+                    },
+                    "sales": {
+                        "schema": "StockCollection",
+                        "type": "integer",
+                        "example": "sales"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

@@ -16,4 +16,8 @@ class Shop extends Model
 		'city',
 		'country',
     ];
+
+    public function products(){
+        return $this->belongsToMany('App\Models\Product', 'stocks', 'shop_id', 'product_id')->withPivot('price', 'stock', 'sales');
+    }
 }
