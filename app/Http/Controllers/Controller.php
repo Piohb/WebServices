@@ -1,15 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Emeric
- * Date: 26/02/2021
- * Time: 09:38
- */
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
-class Controller
+class Controller extends BaseController
 {
-
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
