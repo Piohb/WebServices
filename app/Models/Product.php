@@ -14,4 +14,13 @@ class Product extends Model
 		'description',
 		'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function shops(){
+        return $this->belongsToMany('App\Models\Shop', 'stocks', 'product_id', 'shop_id')->withPivot('price', 'stock', 'sales');
+    }
 }
