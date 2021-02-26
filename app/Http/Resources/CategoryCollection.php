@@ -1,15 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Emeric
- * Date: 26/02/2021
- * Time: 09:43
- */
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryCollection
+/**
+ * @OA\Schema(schema="Category")
+ * {
+ *   @OA\Property(property="name", type="string", example="name"),
+ */
+class CategoryCollection extends JsonResource
 {
-
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return [
+            'name' => $this->name,
+        ];
+    }
 }
