@@ -134,8 +134,9 @@ class ProductController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update(Product $product)
+    public function update($id, Product $product)
     {
+        $product = Product::findOrFail($id);
         $this->validate(request(), [
             'name' => ['string'],
             'description' => ['text'],
@@ -178,8 +179,9 @@ class ProductController extends Controller
      *
      * @throws
      */
-    public function destroy(Product $product)
+    public function destroy($id, Product $product)
     {
+        $product = Product::findOrFail($id);
         $product->delete();
         return response()->json(array('message' => 'Product deleted'));
     }

@@ -177,8 +177,9 @@ class ShopController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update(Shop $shop)
+    public function update($id, Shop $shop)
     {
+        $shop = Shop::findOrFail($id);
         $this->validate(request(), [
             'name' => ['string'],
             'address_line' => ['string'],
@@ -226,8 +227,9 @@ class ShopController extends Controller
      * @throws
      */
 
-    public function destroy(Shop $shop)
+    public function destroy($id, Shop $shop)
     {
+        $shop = Shop::findOrFail($id);
         $shop->delete();
         return response()->json(array('message' => 'Shop deleted'));
     }

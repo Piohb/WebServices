@@ -156,8 +156,10 @@ class CategoryController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update(Category $category)
+    public function update($id, Category $category)
     {
+        $category = Category::findOrFail($id);
+
         $this->validate(request(), [
             'name' => ['string']
         ]);
@@ -196,8 +198,9 @@ class CategoryController extends Controller
      *
      * @throws
      */
-    public function destroy(Category $category)
+    public function destroy($id, Category $category)
     {
+        $category = Category::findOrFail($id);
         $category->delete();
         return response()->json(array('message' => 'Category deleted'));
     }
