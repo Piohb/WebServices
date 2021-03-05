@@ -34,11 +34,13 @@ class ProductController extends Controller
      *
      * @throws
      */
+    
     public function show($id)
     {
         $product = Product::findOrFail($id);
         return response()->json(new ProductCollection($product));
     }
+
 
     /**
      * Add a new Product
@@ -78,8 +80,13 @@ class ProductController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store()
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $this->validate(request(), [
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
@@ -139,6 +146,10 @@ class ProductController extends Controller
 
     public function update($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $product = Product::findOrFail($id);
         
         $this->validate(request(), [
@@ -184,8 +195,13 @@ class ProductController extends Controller
      *
      * @throws
      */
+
     public function destroy($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json(array('message' => 'Product deleted'));
