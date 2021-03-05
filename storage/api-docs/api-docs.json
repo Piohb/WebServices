@@ -836,6 +836,100 @@
                         "description": "Unauthorized"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Stock"
+                ],
+                "summary": "Delete a stock",
+                "operationId": "App\\Http\\Controllers\\StockController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "stock id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "stock deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Stock"
+                ],
+                "summary": "Update a stock",
+                "operationId": "App\\Http\\Controllers\\StockController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "stock id"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Provide stock informations",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "price": {
+                                        "description": "Update a stock",
+                                        "type": "float",
+                                        "example": "5"
+                                    },
+                                    "stock": {
+                                        "description": "Update a stock",
+                                        "type": "integer",
+                                        "example": "13"
+                                    },
+                                    "sales": {
+                                        "description": "Update a stock",
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "stock updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stock"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
             }
         },
         "/stocks": {

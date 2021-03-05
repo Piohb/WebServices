@@ -138,6 +138,7 @@ class ProductController extends Controller
     public function update($id)
     {
         $product = Product::findOrFail($id);
+        
         $this->validate(request(), [
             'name' => ['string'],
             'description' => ['string'],

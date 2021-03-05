@@ -40,7 +40,7 @@ class StockController extends Controller
         return response()->json(new StockCollection($stock));
     }
     
-    
+
     /**
      * Add a new stock
      *
@@ -100,6 +100,101 @@ class StockController extends Controller
         $stock->save();
 
         return response()->json(new StockCollection($stock));
+    }
+
+
+    /**
+     * Update a stock
+     *
+     * @OA\Patch(
+     *     path="/stocks/{id}",
+     *     tags={"Stock"},
+     *     summary="Update a stock",
+     *     @OA\Parameter(
+     *         description="stock id",
+     *         in="path",
+     *         name="id",
+     *     ),
+     *     @OA\RequestBody(
+     *          description= "Provide stock informations",
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="price", type="float", example="5"),
+     *              @OA\Property(property="stock", type="integer", example="13"),
+     *              @OA\Property(property="sales", type="integer", example="10"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *         response=200,
+     *         description="stock updated",
+     *         @OA\JsonContent(ref="#/components/schemas/Stock")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Validation Error",
+     *      )
+     *    )
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+
+    public function update($id)
+    {
+        $stock = Stock::findOrFail($id);
+
+        $this->validate(request(), [
+            'price' => ['required', 'numeric'],
+            'stock' => ['required', 'integer'],
+            'sales' => ['nullable|integer|between:0,100']
+        ]);
+
+        request()->has('price') ? $stock->price = request('price') : false;
+        request()->has('stock') ? $stock->stock = request('stock') : false;
+        request()->has('sales') ? $stock->sales = request('sales') : false;
+        $stock->save();
+
+        return response()->json(new StockCollection($stock));
+    }
+
+
+    /**
+     * @OA\Delete(
+     *     path="/stocks/{id}",
+     *     tags={"Stock"},
+     *     summary="Delete a stock",
+     *     @OA\Parameter(
+     *         description="stock id",
+     *         in="path",
+     *         name="id",
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="stock deleted",
+     *            @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="OK"),
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      )
+     * )
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws
+     */
+    public function destroy($id)
+    {
+        $stock = Stock::findOrFail($id);
+        $stock->delete();
+        return response()->json(array('message' => 'Stock deleted'));
     }
 
 }

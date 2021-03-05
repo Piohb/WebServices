@@ -57,10 +57,10 @@ Route::patch('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
 /*== STOCK ==*/
-
 Route::get('/stocks/{id}', [StockController::class, 'show']);
 Route::post('/stocks', [StockController::class, 'store']);
-
+Route::patch('/stocks/{id}', [StockController::class, 'update']);
+Route::delete('/stocks/{id}', [StockController::class, 'destroy']);
 
 
 

@@ -181,6 +181,7 @@ class ShopController extends Controller
     public function update($id)
     {
         $shop = Shop::findOrFail($id);
+        
         $this->validate(request(), [
             'name' => ['string'],
             'address_line' => ['string'],
