@@ -8,6 +8,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,9 @@ Route::get('/stocks/{id}', [StockController::class, 'show']);
 Route::post('/stocks', [StockController::class, 'store']);
 Route::patch('/stocks/{id}', [StockController::class, 'update']);
 Route::delete('/stocks/{id}', [StockController::class, 'destroy']);
+
+/*== MAIL ==*/
+Route::post('/mail/{id}', [MailController::class, 'mail']);
 
 
 

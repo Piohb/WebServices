@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductCollection;
+use App\Models\Stock;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -205,5 +206,37 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json(array('message' => 'Product deleted'));
+    }
+
+
+    /**
+     * @OA\Get(
+     *     path="/shop_products/{id}",
+     *     tags={"Product"},
+     *     summary="Return all products from a specific shop",
+     *     @OA\Parameter(
+     *         description="shop id",
+     *         in="path",
+     *         name="id",
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="get product",
+     *     	   @OA\JsonContent(ref="#/components/schemas/Product")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      )
+     * )
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws
+     */
+    public function fromShop($id)
+    {
+        $stocks = Stock::findOrFail($id);
+        return response()->json(new ProductCollection($stocks));
     }
 }
