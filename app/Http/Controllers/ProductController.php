@@ -53,7 +53,7 @@ class ProductController extends Controller
      *                required={"name", "description", "category_id"},
      *              type="object",
      *     			@OA\Property(property="name", type="string", example="product_name"),
-     *     			@OA\Property(property="description", type="text", example="product_description"),
+     *     			@OA\Property(property="description", type="string", example="product_description"),
      *              @OA\Property(property="category_id", type="integer", example="product_category_id"),
      *          )
      *      ),
@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         $this->validate(request(), [
             'name' => ['required', 'string'],
-            'description' => ['required', 'text'],
+            'description' => ['required', 'string'],
             'category_id' => ['required', 'integer']
         ]);
 
@@ -110,7 +110,7 @@ class ProductController extends Controller
      *          @OA\JsonContent(
      *              type="object",
      *     			@OA\Property(property="name", type="string", example="product_name"),
-     *     			@OA\Property(property="description", type="text", example="product_description"),
+     *     			@OA\Property(property="description", type="string", example="product_description"),
      *              @OA\Property(property="category_id", type="integer", example="product_category_id")
      *          )
      *      ),
@@ -138,7 +138,7 @@ class ProductController extends Controller
     {
         $this->validate(request(), [
             'name' => ['string'],
-            'description' => ['text'],
+            'description' => ['string'],
             'category_id' => ['integer']
         ]);
 

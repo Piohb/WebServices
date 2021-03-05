@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @OA\Schema(schema="Product")
  * {
+ *   @OA\Property(property="id", type="integer", example="id"),
  *   @OA\Property(property="name", type="string", example="name"),
  *   @OA\Property(property="description", type="text", example="description"),
  *   @OA\Property(property="category_id", type="integer", example="category_id"),
@@ -22,6 +23,7 @@ class ProductCollection extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=> $this->id,
             'name' => $this->name,
             'description' => $this->description,
             'category_id' => $this->category_id,
