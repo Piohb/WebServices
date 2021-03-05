@@ -85,6 +85,7 @@ class CategoryController extends Controller
      *     			@OA\Property(property="name", type="string", example="category_name"),
      *          )
      *      ),
+     *     security={{"jwt":{}}},
      *      @OA\Response(
      *         response=200,
      *         description="category created",
@@ -136,6 +137,7 @@ class CategoryController extends Controller
      *     			@OA\Property(property="name", type="string", example="category_name")
      *          )
      *      ),
+     *     security={{"jwt":{}}},
      *      @OA\Response(
      *         response=200,
      *         description="category updated",
@@ -181,6 +183,7 @@ class CategoryController extends Controller
      *         in="path",
      *         name="id",
      *     ),
+     *     security={{"jwt":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="category deleted",
