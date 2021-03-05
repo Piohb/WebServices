@@ -8,6 +8,66 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/categories",
+     *     tags={"Category"},
+     *     summary="Return all categories",
+     *     @OA\Response(
+     *         response=200,
+     *         description="get categories",
+     *         @OA\JsonContent(
+     *              @OA\Items(ref="#/components/schemas/Category")
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      )
+     * )
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws
+     */
+
+    public function index()
+    {
+        $category = Category::get();
+        return response()->json(CategoryCollection::collection($category));
+    }
+
+
+    /**
+     * @OA\Get(
+     *     path="/categories/{id}",
+     *     tags={"Category"},
+     *     summary="Return a category",
+     *     @OA\Parameter(
+     *         description="category id",
+     *         in="path",
+     *         name="id",
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="get category",
+     *         @OA\JsonContent(ref="#/components/schemas/Category")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      )
+     * )
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws
+     */
+
+    public function show(Category $category)
+    {
+        return response()->json(new CategoryCollection($category));
+    }
 
     /**
      * Add a new category
