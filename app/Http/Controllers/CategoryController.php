@@ -30,7 +30,6 @@ class CategoryController extends Controller
      *
      * @throws
      */
-
     public function index()
     {
         $category = Category::get();
@@ -63,9 +62,10 @@ class CategoryController extends Controller
      *
      * @throws
      */
-
-    public function show(Category $category)
+    public function show($id)
     {
+        $category = Category::findOrFail($id);
+
         return response()->json(new CategoryCollection($category));
     }
 
@@ -156,7 +156,7 @@ class CategoryController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update($id, Category $category)
+    public function update($id)
     {
         $category = Category::findOrFail($id);
 
@@ -198,7 +198,7 @@ class CategoryController extends Controller
      *
      * @throws
      */
-    public function destroy($id, Category $category)
+    public function destroy($id)
     {
         $category = Category::findOrFail($id);
         $category->delete();
