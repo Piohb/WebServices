@@ -58,6 +58,7 @@ class ProductController extends Controller
      *              @OA\Property(property="category_id", type="integer", example="product_category_id"),
      *          )
      *      ),
+     *     security={{"jwt":{}}},
      *      @OA\Response(
      *         response=200,
      *         description="product created",
@@ -115,6 +116,7 @@ class ProductController extends Controller
      *              @OA\Property(property="category_id", type="integer", example="product_category_id")
      *          )
      *      ),
+     *     security={{"jwt":{}}},
      *      @OA\Response(
      *         response=200,
      *         description="product updated",
@@ -164,6 +166,7 @@ class ProductController extends Controller
      *         in="path",
      *         name="id",
      *     ),
+     *     security={{"jwt":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="product deleted",
