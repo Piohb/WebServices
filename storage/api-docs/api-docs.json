@@ -837,6 +837,77 @@
                     }
                 }
             }
+        },
+        "/stocks": {
+            "post": {
+                "tags": [
+                    "Stock"
+                ],
+                "summary": "Add a new stock",
+                "operationId": "App\\Http\\Controllers\\StockController::store",
+                "requestBody": {
+                    "description": "Provide stock informations",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "product_id",
+                                    "shop_id",
+                                    "price",
+                                    "stock"
+                                ],
+                                "properties": {
+                                    "product_id": {
+                                        "description": "Add a new stock",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "shop_id": {
+                                        "description": "Add a new stock",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "price": {
+                                        "description": "Add a new stock",
+                                        "type": "float",
+                                        "example": "5"
+                                    },
+                                    "stock": {
+                                        "description": "Add a new stock",
+                                        "type": "integer",
+                                        "example": "13"
+                                    },
+                                    "sales": {
+                                        "description": "Add a new stock",
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "stock created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stock"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
         }
     },
     "components": {

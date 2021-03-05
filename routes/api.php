@@ -58,6 +58,8 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
 /*== STOCK ==*/
 
+Route::get('/stocks/{id}', [StockController::class, 'show']);
+Route::post('/stocks', [StockController::class, 'store']);
 
 
 
