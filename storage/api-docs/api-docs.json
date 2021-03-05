@@ -65,7 +65,7 @@
                 }
             }
         },
-        "/auth/registration": {
+        "/auth/register": {
             "post": {
                 "tags": [
                     "Auth"
@@ -179,7 +179,19 @@
                 "operationId": "App\\Http\\Controllers\\AuthController::userProfile",
                 "responses": {
                     "200": {
-                        "description": "Success : Get user informations"
+                        "description": "Success : Get user informations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -193,6 +205,30 @@
             }
         },
         "/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Return all categories",
+                "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "responses": {
+                    "200": {
+                        "description": "get categories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Category"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Category"
@@ -237,15 +273,39 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Return a category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "category id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get category",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Category"
@@ -279,12 +339,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "patch": {
                 "tags": [
@@ -333,12 +388,7 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/products/{id}": {
@@ -369,12 +419,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "delete": {
                 "tags": [
@@ -409,12 +454,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "patch": {
                 "tags": [
@@ -473,12 +513,7 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/products": {
@@ -538,12 +573,7 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/shops": {
@@ -569,12 +599,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -644,12 +669,7 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/shops/{id}": {
@@ -680,12 +700,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "delete": {
                 "tags": [
@@ -720,12 +735,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "patch": {
                 "tags": [
@@ -794,12 +804,7 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         },
         "/stocks/{id}": {
@@ -830,12 +835,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             }
         }
     },
@@ -927,6 +927,26 @@
                         "schema": "StockCollection",
                         "type": "integer",
                         "example": "sales"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "email": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "email"
+                    },
+                    "password": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "password"
                     }
                 },
                 "type": "object"
