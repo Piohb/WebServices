@@ -669,7 +669,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/shops/{id}": {
@@ -735,7 +740,12 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -804,7 +814,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/stocks/{id}": {
@@ -870,7 +885,12 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -929,7 +949,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/stocks": {
@@ -1000,7 +1025,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         }
     },
@@ -1135,6 +1165,15 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "jwt": {
+                "type": "http",
+                "description": "JWT token bearer",
+                "name": "jwt",
+                "in": "header",
+                "scheme": "Bearer"
             }
         }
     },

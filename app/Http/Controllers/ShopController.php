@@ -79,6 +79,7 @@ class ShopController extends Controller
      *     path="/shops",
      *     tags={"Shop"},
      *     summary="Add a new shop",
+     *     security={{"jwt":{}}},
      *     @OA\RequestBody(
      *          description= "Provide shop informations",
      *          required=true,
@@ -141,6 +142,7 @@ class ShopController extends Controller
      *     path="/shops/{id}",
      *     tags={"Shop"},
      *     summary="Update a shop",
+     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="shop id",
      *         in="path",
@@ -206,6 +208,7 @@ class ShopController extends Controller
      *     path="/shops/{id}",
      *     tags={"Shop"},
      *     summary="Delete a shop",
+     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="shop id",
      *         in="path",

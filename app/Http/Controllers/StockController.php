@@ -48,6 +48,7 @@ class StockController extends Controller
      *     path="/stocks",
      *     tags={"Stock"},
      *     summary="Add a new stock",
+     *     security={{"jwt":{}}},
      *     @OA\RequestBody(
      *          description= "Provide stock informations",
      *          required=true,
@@ -110,6 +111,7 @@ class StockController extends Controller
      *     path="/stocks/{id}",
      *     tags={"Stock"},
      *     summary="Update a stock",
+     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="stock id",
      *         in="path",
@@ -168,6 +170,7 @@ class StockController extends Controller
      *     path="/stocks/{id}",
      *     tags={"Stock"},
      *     summary="Delete a stock",
+     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="stock id",
      *         in="path",
