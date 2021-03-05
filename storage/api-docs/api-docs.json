@@ -65,7 +65,7 @@
                 }
             }
         },
-        "/auth/registration": {
+        "/auth/register": {
             "post": {
                 "tags": [
                     "Auth"
@@ -179,7 +179,19 @@
                 "operationId": "App\\Http\\Controllers\\AuthController::userProfile",
                 "responses": {
                     "200": {
-                        "description": "Success : Get user informations"
+                        "description": "Success : Get user informations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -569,12 +581,7 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": [
-                    {
-                        "jwt": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -927,6 +934,26 @@
                         "schema": "StockCollection",
                         "type": "integer",
                         "example": "sales"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "email": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "email"
+                    },
+                    "password": {
+                        "schema": "UserCollection",
+                        "type": "string",
+                        "example": "password"
                     }
                 },
                 "type": "object"
