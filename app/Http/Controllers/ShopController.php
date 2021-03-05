@@ -115,6 +115,10 @@ class ShopController extends Controller
 
     public function store()
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $this->validate(request(), [
             'name' => ['required', 'string'],
             'address_line' => ['required', 'string'],
@@ -182,8 +186,12 @@ class ShopController extends Controller
 
     public function update($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $shop = Shop::findOrFail($id);
-        
+
         $this->validate(request(), [
             'name' => ['string'],
             'address_line' => ['string'],
@@ -234,6 +242,10 @@ class ShopController extends Controller
 
     public function destroy($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        
         $shop = Shop::findOrFail($id);
         $shop->delete();
         return response()->json(array('message' => 'Shop deleted'));

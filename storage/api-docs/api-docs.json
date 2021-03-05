@@ -273,7 +273,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/categories/{id}": {
@@ -339,7 +344,12 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -388,7 +398,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/products/{id}": {
@@ -454,7 +469,12 @@
                     "401": {
                         "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -513,7 +533,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/products": {
@@ -573,7 +598,12 @@
                     "422": {
                         "description": "Validation Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
             }
         },
         "/shops": {

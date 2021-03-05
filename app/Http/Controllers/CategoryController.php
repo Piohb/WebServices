@@ -30,6 +30,7 @@ class CategoryController extends Controller
      *
      * @throws
      */
+    
     public function index()
     {
         $category = Category::get();
@@ -62,12 +63,14 @@ class CategoryController extends Controller
      *
      * @throws
      */
+
     public function show($id)
     {
         $category = Category::findOrFail($id);
 
         return response()->json(new CategoryCollection($category));
     }
+
 
     /**
      * Add a new category
@@ -105,8 +108,13 @@ class CategoryController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store()
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $this->validate(request(), [
             'name' => ['required', 'string'],
         ]);
@@ -117,6 +125,7 @@ class CategoryController extends Controller
 
         return response()->json(new CategoryCollection($category));
     }
+
 
     /**
      * Update a category
@@ -160,6 +169,10 @@ class CategoryController extends Controller
 
     public function update($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $category = Category::findOrFail($id);
 
         $this->validate(request(), [
@@ -201,8 +214,13 @@ class CategoryController extends Controller
      *
      * @throws
      */
+
     public function destroy($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $category = Category::findOrFail($id);
         $category->delete();
         return response()->json(array('message' => 'Category deleted'));

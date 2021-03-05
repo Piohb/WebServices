@@ -34,6 +34,7 @@ class StockController extends Controller
      *
      * @throws
      */
+
     public function show($id)
     {
         $stock = Stock::findOrFail($id);
@@ -84,6 +85,10 @@ class StockController extends Controller
 
     public function store()
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $this->validate(request(), [
             'product_id' => ['required', 'exists:products,id'],
             'shop_id' => ['required', 'exists:shops,id'],
@@ -148,6 +153,10 @@ class StockController extends Controller
 
     public function update($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $stock = Stock::findOrFail($id);
 
         $this->validate(request(), [
@@ -193,8 +202,13 @@ class StockController extends Controller
      *
      * @throws
      */
+    
     public function destroy($id)
     {
+        if(auth()->user()->role != 'admin') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         $stock = Stock::findOrFail($id);
         $stock->delete();
         return response()->json(array('message' => 'Stock deleted'));

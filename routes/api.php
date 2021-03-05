@@ -25,7 +25,7 @@ Route::group([
 
 ], function ($router) {
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']); //correct
+    Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
@@ -36,7 +36,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /*== SHOP ==*/
-Route::get('/shops', [ShopController::class, 'index']); //correct
+Route::get('/shops', [ShopController::class, 'index']);
 Route::get('/shops/{id}', [ShopController::class, 'show']);
 Route::post('/shops', [ShopController::class, 'store']);
 Route::patch('/shops/{id}', [ShopController::class, 'update']);
