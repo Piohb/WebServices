@@ -967,11 +967,6 @@
                         "schema": "UserCollection",
                         "type": "string",
                         "example": "email"
-                    },
-                    "password": {
-                        "schema": "UserCollection",
-                        "type": "string",
-                        "example": "password"
                     }
                 },
                 "type": "object"
