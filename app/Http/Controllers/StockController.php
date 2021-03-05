@@ -35,7 +35,6 @@ class StockController extends Controller
      *
      * @throws
      */
-
     public function show(Stock $stock)
     {
         return response()->json(new StockCollection($stock));

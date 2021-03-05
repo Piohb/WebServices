@@ -35,7 +35,6 @@ class ProductController extends Controller
      *
      * @throws
      */
-
     public function show(Product $product)
     {
         return response()->json(new ProductCollection($product));

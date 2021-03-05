@@ -14,7 +14,6 @@ class ShopController extends Controller
      *     path="/shops",
      *     tags={"Shop"},
      *     summary="Return all shops",
-     *     security={{"jwt":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="get shops",
