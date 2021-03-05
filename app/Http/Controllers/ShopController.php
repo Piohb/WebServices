@@ -84,13 +84,14 @@ class ShopController extends Controller
      *          description= "Provide shop informations",
      *          required=true,
      *          @OA\JsonContent(
-     *                required={"name", "address_line", "zipcode", "city", "country"},
+     *                required={"name", "address_line", "zipcode", "city", "country", "email"},
      *              type="object",
      *     			@OA\Property(property="name", type="string", example="shop_name"),
      *     			@OA\Property(property="address_line", type="string", example="shop_address_line"),
      *              @OA\Property(property="zipcode", type="string", example="shop_zipcode"),
      *              @OA\Property(property="city", type="string", example="shop_city"),
      *     			@OA\Property(property="country", type="string", example="shop_country"),
+     *              @OA\Property(property="email", type="string", example="shop_email"),
      *          )
      *      ),
      *      @OA\Response(
@@ -124,7 +125,8 @@ class ShopController extends Controller
             'address_line' => ['required', 'string'],
             'zipcode' => ['required', 'string'],
             'city' => ['required', 'string'],
-            'country' => ['required', 'string']
+            'country' => ['required', 'string'],
+            'email' => ['required', 'string']
         ]);
 
         $shop = new Shop();
@@ -161,7 +163,7 @@ class ShopController extends Controller
      *              @OA\Property(property="zipcode", type="string", example="shop_zipcode"),
      *              @OA\Property(property="city", type="string", example="shop_city"),
      *     			@OA\Property(property="country", type="string", example="shop_country"),
-     *
+     *              @OA\Property(property="email", type="string", example="shop_email"),
      *          )
      *      ),
      *      @OA\Response(
@@ -197,7 +199,8 @@ class ShopController extends Controller
             'address_line' => ['string'],
             'zipcode' => ['string'],
             'city' => ['string'],
-            'country' => ['string']
+            'country' => ['string'],
+            'email' => ['string']
         ]);
 
         request()->has('name') ? $shop->name = request('name') : false;

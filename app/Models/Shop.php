@@ -15,6 +15,7 @@ class Shop extends Model
 		'zipcode',
 		'city',
 		'country',
+        'email',
     ];
 
     public function products(){
