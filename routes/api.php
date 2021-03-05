@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,7 @@ Route::group([
 
 ], function ($router) {
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/register', [AuthController::class, 'register']); //correct
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
@@ -32,28 +35,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/shops', [ShopController::class, 'index']);
+/*== SHOP ==*/
+Route::get('/shops', [ShopController::class, 'index']); //correct
+Route::get('/shops/{id}', [ShopController::class, 'show']);
+Route::post('/shops', [ShopController::class, 'store']);
+Route::patch('/shops/{id}', [ShopController::class, 'update']);
+Route::delete('/shops/{id}', [ShopController::class, 'destroy']);
 
-/*Route::group(['middleware' => 'jwt'], function () {
-    Route::get('/shops', 'ShopController@index');
-    Route::get('/shops/{id}', 'ShopController@show');
-    Route::post('/shops', 'ShopController@store');
-    Route::patch('/shops/{id}', 'ShopController@update');
-    Route::delete('/shops/{id}', 'ShopController@destroy');
+/*== CATEGORY ==*/
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{id}', [CategoryController::class, 'show']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::patch('/categories/{id}', [CategoryController::class, 'update']);
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
 
-//Route::get('/products', 'ProductController@index');
-    Route::get('/products/{id}', 'ProductController@show');
-    Route::post('/products', 'ProductController@store');
-    Route::patch('/products/{id}', 'ProductController@update');
-    Route::delete('/products/{id}', 'ProductController@destroy');
+/*== PRODUCT ==*/
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::patch('/products/{id}', [ProductController::class, 'update']);
+Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
-//Route::get('/stocks', 'StockController@index');
-    Route::get('/stocks/{id}', 'StockController@show');
+/*== STOCK ==*/
 
-//Route::get('/categories', 'ProductController@index');
-    Route::post('api/categories', 'CategoryController@store');
-    Route::patch('/categories/{id}', 'CategoryController@update');
-    Route::delete('/categories/{id}', 'CategoryController@destroy');
-});*/
+
+
 
 
