@@ -14,7 +14,6 @@ class StockController extends Controller
      *     path="/stocks/{id}",
      *     tags={"Stock"},
      *     summary="Return a stock",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="stock id",
      *         in="path",

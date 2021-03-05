@@ -16,7 +16,6 @@ class CategoryController extends Controller
      *     path="/categories",
      *     tags={"Category"},
      *     summary="Add a new category",
-     *     security={{"jwt":{}}},
      *     @OA\RequestBody(
      *          description= "Provide category informations",
      *          required=true,
@@ -65,7 +64,6 @@ class CategoryController extends Controller
      *     path="/categories/{id}",
      *     tags={"Category"},
      *     summary="Update a category",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="category id",
      *         in="path",
@@ -116,7 +114,6 @@ class CategoryController extends Controller
      *     path="/categories/{id}",
      *     tags={"Category"},
      *     summary="Delete a category",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="category id",
      *         in="path",

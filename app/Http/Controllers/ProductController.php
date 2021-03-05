@@ -14,7 +14,6 @@ class ProductController extends Controller
      *     path="/products/{id}",
      *     tags={"Product"},
      *     summary="Return a product",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="product id",
      *         in="path",
@@ -47,7 +46,6 @@ class ProductController extends Controller
      *     path="/products",
      *     tags={"Product"},
      *     summary="Add a new product",
-     *     security={{"jwt":{}}},
      *     @OA\RequestBody(
      *          description= "Provide product informations",
      *          required=true,
@@ -102,7 +100,6 @@ class ProductController extends Controller
      *     path="/products/{id}",
      *     tags={"Product"},
      *     summary="Update a product",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="product id",
      *         in="path",
@@ -159,7 +156,6 @@ class ProductController extends Controller
      *     path="/products/{id}",
      *     tags={"Product"},
      *     summary="Delete a product",
-     *     security={{"jwt":{}}},
      *     @OA\Parameter(
      *         description="product id",
      *         in="path",
