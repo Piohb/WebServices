@@ -34,8 +34,9 @@ class ProductController extends Controller
      *
      * @throws
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $product = Product::findOrFail($id);
         return response()->json(new ProductCollection($product));
     }
 
@@ -134,7 +135,7 @@ class ProductController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update($id, Product $product)
+    public function update($id)
     {
         $product = Product::findOrFail($id);
         $this->validate(request(), [
@@ -179,7 +180,7 @@ class ProductController extends Controller
      *
      * @throws
      */
-    public function destroy($id, Product $product)
+    public function destroy($id)
     {
         $product = Product::findOrFail($id);
         $product->delete();

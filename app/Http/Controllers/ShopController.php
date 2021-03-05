@@ -65,8 +65,9 @@ class ShopController extends Controller
      * @throws
      */
 
-    public function show(Shop $shop)
+    public function show($id)
     {
+        $shop = Shop::findOrFail($id);
         return response()->json(new ShopCollection($shop));
     }
 
@@ -177,7 +178,7 @@ class ShopController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-    public function update($id, Shop $shop)
+    public function update($id)
     {
         $shop = Shop::findOrFail($id);
         $this->validate(request(), [
@@ -227,7 +228,7 @@ class ShopController extends Controller
      * @throws
      */
 
-    public function destroy($id, Shop $shop)
+    public function destroy($id)
     {
         $shop = Shop::findOrFail($id);
         $shop->delete();
