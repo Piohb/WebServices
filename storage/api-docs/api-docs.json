@@ -482,7 +482,7 @@
                                     },
                                     "description": {
                                         "description": "Update a product",
-                                        "type": "text",
+                                        "type": "string",
                                         "example": "product_description"
                                     },
                                     "category_id": {
@@ -542,7 +542,7 @@
                                     },
                                     "description": {
                                         "description": "Add a new Product",
-                                        "type": "text",
+                                        "type": "string",
                                         "example": "product_description"
                                     },
                                     "category_id": {
@@ -843,6 +843,11 @@
         "schemas": {
             "Category": {
                 "properties": {
+                    "id": {
+                        "schema": "CategoryCollection",
+                        "type": "integer",
+                        "example": "id"
+                    },
                     "name": {
                         "schema": "CategoryCollection",
                         "type": "string",
@@ -853,6 +858,11 @@
             },
             "Product": {
                 "properties": {
+                    "id": {
+                        "schema": "ProductCollection",
+                        "type": "integer",
+                        "example": "id"
+                    },
                     "name": {
                         "schema": "ProductCollection",
                         "type": "string",
@@ -873,6 +883,11 @@
             },
             "Shop": {
                 "properties": {
+                    "id": {
+                        "schema": "ShopCollection",
+                        "type": "integer",
+                        "example": "id"
+                    },
                     "name": {
                         "schema": "ShopCollection",
                         "type": "string",
@@ -903,6 +918,11 @@
             },
             "Stock": {
                 "properties": {
+                    "id": {
+                        "schema": "StockCollection",
+                        "type": "integer",
+                        "example": "id"
+                    },
                     "product_id": {
                         "schema": "StockCollection",
                         "type": "id",
@@ -933,6 +953,11 @@
             },
             "User": {
                 "properties": {
+                    "id": {
+                        "schema": "UserCollection",
+                        "type": "integer",
+                        "example": "id"
+                    },
                     "name": {
                         "schema": "UserCollection",
                         "type": "string",
