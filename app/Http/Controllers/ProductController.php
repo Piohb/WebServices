@@ -236,7 +236,7 @@ class ProductController extends Controller
      */
     public function fromShop($id)
     {
-        $stocks = Stock::findOrFail($id);
+        $stocks = Stock::where('shop_id', $id);
         return response()->json(new ProductCollection($stocks));
     }
 }
