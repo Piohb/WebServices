@@ -242,10 +242,10 @@ class ProductController extends Controller
         $products = collect();
 
         foreach ($stocks as $stock){
-            $products->push(Product::where('id', $stock->product_id ));
-            dd($products);
+            $products []= Product::where('id', $stock->product_id)->get();
         }
 
-        return response()->json($products);
+        //dd($products);
+        return response()->json(new ProductCollection($products));
     }
 }
