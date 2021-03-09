@@ -236,13 +236,13 @@ class ProductController extends Controller
      */
     public function fromShop($id)
     {
-        $stocks = Stock::where('shop_id', $id));
+        $stocks = Stock::where('shop_id', $id);
         dd($stocks);
 
         $products = collect();
 
         foreach ($stocks as $stock){
-            $products []= Product::where('id', $stock->product_id)->get();
+            $products [] = Product::where('id', $stock->product_id)->get();
         }
 
         //dd($products);
