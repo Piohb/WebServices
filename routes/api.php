@@ -64,7 +64,7 @@ Route::patch('/stocks/{id}', [StockController::class, 'update']);
 Route::delete('/stocks/{id}', [StockController::class, 'destroy']);
 
 /*== MAIL ==*/
-Route::post('/mail/{id}', [MailController::class, 'mail']);
+Route::post('/mail_shop/{id}', [MailController::class, 'mail']);
 
 
 

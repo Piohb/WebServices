@@ -406,6 +406,72 @@
                 ]
             }
         },
+        "/mail_shop/{id}": {
+            "post": {
+                "tags": [
+                    "Mail"
+                ],
+                "summary": "Send a Mail to Shop",
+                "operationId": "App\\Http\\Controllers\\MailController::mail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "shop id"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Provide product informations",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "subject": {
+                                        "description": "Send a Mail to Shop",
+                                        "type": "string",
+                                        "example": "subject"
+                                    },
+                                    "message": {
+                                        "description": "Send a Mail to Shop",
+                                        "type": "string",
+                                        "example": "message"
+                                    },
+                                    "name": {
+                                        "description": "Send a Mail to Shop",
+                                        "type": "string",
+                                        "example": "name"
+                                    },
+                                    "mail": {
+                                        "description": "Send a Mail to Shop",
+                                        "type": "email",
+                                        "example": "mail"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "mail sended",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Shop"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
         "/products/{id}": {
             "get": {
                 "tags": [
@@ -606,6 +672,37 @@
                 ]
             }
         },
+        "/shop_products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Return all products from a specific shop",
+                "operationId": "App\\Http\\Controllers\\ProductController::fromShop",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "shop id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get product",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
         "/shops": {
             "get": {
                 "tags": [
@@ -648,7 +745,8 @@
                                     "address_line",
                                     "zipcode",
                                     "city",
-                                    "country"
+                                    "country",
+                                    "email"
                                 ],
                                 "properties": {
                                     "name": {
@@ -675,6 +773,11 @@
                                         "description": "Add a new shop",
                                         "type": "string",
                                         "example": "shop_country"
+                                    },
+                                    "email": {
+                                        "description": "Add a new shop",
+                                        "type": "string",
+                                        "example": "shop_email"
                                     }
                                 },
                                 "type": "object"
@@ -820,6 +923,11 @@
                                         "description": "Update a shop",
                                         "type": "string",
                                         "example": "shop_country"
+                                    },
+                                    "email": {
+                                        "description": "Update a shop",
+                                        "type": "string",
+                                        "example": "shop_email"
                                     }
                                 },
                                 "type": "object"

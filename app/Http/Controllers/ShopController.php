@@ -126,7 +126,7 @@ class ShopController extends Controller
             'zipcode' => ['required', 'string'],
             'city' => ['required', 'string'],
             'country' => ['required', 'string'],
-            'email' => ['required', 'string']
+            'email' => ['required', 'email']
         ]);
 
         $shop = new Shop();
@@ -200,7 +200,7 @@ class ShopController extends Controller
             'zipcode' => ['string'],
             'city' => ['string'],
             'country' => ['string'],
-            'email' => ['string']
+            'email' => ['email']
         ]);
 
         request()->has('name') ? $shop->name = request('name') : false;
