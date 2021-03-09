@@ -236,8 +236,8 @@ class ProductController extends Controller
      */
     public function fromShop($id)
     {
-        $stocks = Stock::where('shop_id', $id);
-        dump($stocks);
+        $stocks = Stock::where('shop_id', $id));
+        dd($stocks);
 
         $products = collect();
 
