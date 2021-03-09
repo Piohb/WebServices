@@ -94,7 +94,7 @@ class StockController extends Controller
             'shop_id' => ['required', 'exists:shops,id'],
             'price' => ['required', 'numeric'],
             'stock' => ['required', 'integer'],
-            'sales' => ['nullable|integer|between:0,100']
+            'sales' => ['nullable','integer']
         ]);
 
         $stock = new Stock();
