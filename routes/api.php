@@ -53,6 +53,7 @@ Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
 /*== PRODUCT ==*/
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/shop_products/{id}', [ProductController::class, 'fromShop']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::patch('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
