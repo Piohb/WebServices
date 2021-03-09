@@ -66,7 +66,9 @@ class MailController extends Controller
         $to_email = $shop->email;
 
         $data = array(
-            "msg" => $message
+            "msg" => $message,
+            "name" => $name,
+            "mail" => $sender
         );
 
         Mail::send('mail', $data, function($mail) use ($to_email, $sender, $subject) {
